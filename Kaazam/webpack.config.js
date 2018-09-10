@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 //Angular 2 to 4 use this Angular AOT plugin 
 //const AotPlugin = require('@ngtools/webpack').AotPlugin;
-//Angular 5 use this Angular AOT Plugin Sharat
+//Angular 5 use this Angular AOT Plugin Sharat1
 const AotPlugin = require('@ngtools/webpack').AngularComplierPlugin;
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 
