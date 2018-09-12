@@ -28,14 +28,27 @@ namespace Kaazam
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<EasyStoreQuery>();
-            services.AddTransient<ICategoryRepository, CategoryRepository>();
-            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddScoped<StarWarsQuery>();
+            services.AddTransient<ICharacterRepository, CharacterRepository>();
+            services.AddTransient<IEpisodesRepository, EpisodesRepository>();
+            services.AddTransient<IStarshipRepository, StarshipRepository>();
+            //services.AddTransient<ICharacterTypeRepository, CharacterTypeRepository>();
+            //services.AddTransient<ICharacterRepository, CharacterRepository>();
+            //services.AddTransient<ICharacter_Category_Repository, Character_Category_Repository>();
+            //services.AddTransient<IEpisode_Characters_Repository, Episode_Characters_Repository>();
+            //services.AddTransient<IEpisode_Characters_Friends_Repository, Episode_Characters_Friends_Repository>();
+
+
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();
-            services.AddTransient<CategoryType>();
-            services.AddTransient<ProductType>();
+            services.AddTransient<CharacterType>();
+            services.AddTransient<StarshipType>();
+            //services.AddTransient<Character_CategoryType>();
+            services.AddTransient<EpisodeType>();
+            //services.AddTransient<Episode_CharactersType>();
+            //services.AddTransient<Episode_Characters_FriendsType>();
+         
             var sp = services.BuildServiceProvider();
-            services.AddScoped<ISchema>(_ => new EasyStoreSchema(type => (GraphType)sp.GetService(type)) { Query = sp.GetService<EasyStoreQuery>() });
+            services.AddScoped<ISchema>(_ => new StarWarsSchema(type => (GraphType)sp.GetService(type)) { Query = sp.GetService<StarWarsQuery>() });
 
             services.AddCors(options =>
             {
